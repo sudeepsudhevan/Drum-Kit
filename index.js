@@ -7,6 +7,7 @@ for (var i = 0;i<button_list.length;i++){
         // console.log(this);
         var buttonInnerHTML = this.innerHTML;
         makeSound(buttonInnerHTML);
+        buttonAnimation(buttonInnerHTML)
     })
 }
 
@@ -15,6 +16,7 @@ for (var i = 0;i<button_list.length;i++){
 document.addEventListener("keydown", function (event) {
     // console.log(event);
     makeSound(event.key)
+    buttonAnimation(event.key)
 })
 
 function makeSound(key) {
@@ -51,4 +53,13 @@ function makeSound(key) {
             console.log("default")
           break;
     }
+}
+
+function buttonAnimation(current_key) {
+  var activeButton = document.querySelector("."+current_key)
+  activeButton.classList.add("pressed")
+  
+  setTimeout(function (){
+    activeButton.classList.remove("pressed")
+  }, 100)
 }
